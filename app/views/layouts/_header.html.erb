@@ -1,0 +1,13 @@
+<nav class="navbar navbar-default">
+  <div class="container">
+      <% if user_signed_in? %>
+        <div><%= link_to "e-navigator", authenticated_root_path, class: "navbar-brand"%></div>
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Profile", edit_user_registration_path, class: "nav-link"%></li>
+          <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link"%></li>
+        </ul>
+      <% else %>
+        <div><%= link_to "e-navigator", unauthenticated_root_path,  class: "navbar-brand"%></div>
+      <% end %>
+  </div>
+</nav>
