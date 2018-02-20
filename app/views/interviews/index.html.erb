@@ -14,7 +14,7 @@
         <td><%= interview.interview_datetime %></td>
         <td><%= interview.judgement %></td>
         <td><%= link_to "Edit", edit_user_interview_path(current_user, interview.id), class: "btn btn-success" %></td>
-        <td></td>
+        <td><%= link_to "Delete", user_interview_path(current_user, interview.id), method: :delete, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
