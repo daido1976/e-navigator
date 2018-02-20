@@ -1,2 +1,10 @@
-<h1>Interviews#new</h1>
-<p>Find me in app/views/interviews/new.html.erb</p>
+<h1>Interviews new</h1>
+<%= form_for [@user, @interview] do |f| %>
+  <div class="form-group">
+    <%= f.label :interview_datetime %><br />
+    <%= f.datetime_select :interview_datetime, use_month_numbers: :true, minute_step: 15 %>
+  </div>
+  <div>
+    <%= f.submit "Create", class: "btn btn-primary" %>
+  </div>
+<% end %>

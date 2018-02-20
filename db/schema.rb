@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20180220052149) do
   enable_extension "plpgsql"
 
   create_table "interviews", force: :cascade do |t|
-    t.date "interview_date"
+    t.datetime "interview_datetime"
     t.integer "judgement"
     t.bigint "user_id"
     t.datetime "created_at", null: false

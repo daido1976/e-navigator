@@ -5,6 +5,8 @@ class InterviewsController < ApplicationController
   end
 
   def new
+    @user = User.find(params[:user_id])
+    @interview = Interview.new
   end
 
   def create
