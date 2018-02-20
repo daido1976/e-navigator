@@ -1,2 +1,21 @@
-<h1>Interviews#index</h1>
-<p>Find me in app/views/interviews/index.html.erb</p>
+<h1>Interviews index</h1>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>date</th>
+      <th>judgement</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @interviews.each do |interview| %>
+      <tr>
+        <td><%= interview.interview_date %></td>
+        <td><%= interview.judgement %></td>
+        <td></td>
+        <td></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
