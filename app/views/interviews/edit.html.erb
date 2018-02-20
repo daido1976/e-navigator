@@ -1,10 +1,10 @@
-<h1>Interview New</h1>
+<h1>Interview Edit</h1>
 <%= form_for [@user, @interview] do |f| %>
   <div class="form-group">
     <%= f.label :interview_datetime %><br />
     <%= f.datetime_select :interview_datetime, use_month_numbers: :true, minute_step: 15 %>
   </div>
   <div>
-    <%= f.submit "Create", class: "btn btn-primary" %>
+    <%= f.submit "Update", class: "btn btn-primary" %>
   </div>
 <% end %>

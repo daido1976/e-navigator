@@ -14,6 +14,24 @@ class InterviewsController < ApplicationController
     if @interview.save
       flash[:success] = "Interview Created!"
       redirect_to action: "index", flash: {success: "Interview Created!"}
+    else
+      render "new"
+    end
+  end
+
+  def edit
+    @user = User.find(params[:user_id])
+    @interview = @user.interviews.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:user_id])
+    @interview = @user.interviews.find(params[:id])
+    if @interview.update(interview_params)
+      flash[:success] = "Interview Updated!"
+      redirect_to action: "index", flash: {success: "Interview Created!"}
+    else
+      render "edit"
     end
   end
 
