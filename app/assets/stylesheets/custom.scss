@@ -1,0 +1,14 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+.alert {
+  margin-bottom: 0;
+  padding:0;
+  &-notice {
+    color: black;
+  }
+  &-alert {
+    color: red;
+  }
+}
