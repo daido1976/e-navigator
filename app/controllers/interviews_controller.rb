@@ -12,7 +12,7 @@ class InterviewsController < ApplicationController
   def create
     @interview = Interview.new(interview_params)
     if @interview.save
-      flash[:success] = "Interview Created!"
+      flash[:notice] = "Interview Created!"
       redirect_to action: "index"
     else
       render "new"
@@ -28,7 +28,7 @@ class InterviewsController < ApplicationController
     @user = User.find(params[:user_id])
     @interview = @user.interviews.find(params[:id])
     if @interview.update(interview_params)
-      flash[:success] = "Interview Updated!"
+      flash[:notice] = "Interview Updated!"
       redirect_to action: "index"
     else
       render "edit"
@@ -39,7 +39,7 @@ class InterviewsController < ApplicationController
     @user = User.find(params[:user_id])
     @interview = @user.interviews.find(params[:id])
     if @interview.destroy
-      flash[:success] = "Interview Deleted!"
+      flash[:alert] = "Interview Deleted!"
       redirect_to action: "index"
     end
   end
