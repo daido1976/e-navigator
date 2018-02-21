@@ -14,7 +14,7 @@
         <td><%= interview.interview_datetime.strftime("%Y/%m/%d(#{%w(日 月 火 水 木 金 土)[interview.interview_datetime.wday]}) %H:%M") %></td>
         <td><%= t interview.judgement %></td>
         <td><%= link_to "Edit", edit_user_interview_path(current_user, interview.id), class: "btn btn-success" %></td>
-        <td><%= link_to "Delete", user_interview_path(current_user, interview.id), method: :delete, class: "btn btn-danger" %></td>
+        <td><%= link_to "Delete", user_interview_path(current_user, interview.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>

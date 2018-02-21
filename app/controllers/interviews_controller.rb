@@ -1,11 +1,11 @@
 class InterviewsController < ApplicationController
+  before_action :set_user, except: :create
+
   def index
-    @user = User.find(params[:user_id])
-    @interviews = @user.interviews.order(id: :desc)
+    @interviews = @user.interviews.order(interview_datetime: :asc)
   end
 
   def new
-    @user = User.find(params[:user_id])
     @interview = Interview.new
   end
 
@@ -20,12 +20,10 @@ class InterviewsController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:user_id])
     @interview = @user.interviews.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:user_id])
     @interview = @user.interviews.find(params[:id])
     if @interview.update(interview_params)
       flash[:notice] = "Interview Updated!"
@@ -36,7 +34,6 @@ class InterviewsController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:user_id])
     @interview = @user.interviews.find(params[:id])
     if @interview.destroy
       flash[:alert] = "Interview Deleted!"
@@ -47,5 +44,9 @@ class InterviewsController < ApplicationController
   private
   def interview_params
     params.require(:interview).permit(:interview_datetime).merge(user_id: current_user.id)
+  end
+
+  def set_user
+    @user = User.find(params[:user_id])
   end
 end
