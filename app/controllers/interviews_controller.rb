@@ -1,5 +1,6 @@
 class InterviewsController < ApplicationController
   before_action :set_user, except: :create
+  before_action :correct_user, only: :index
 
   def index
     @interviews = @user.interviews.order(interview_datetime: :asc)
@@ -48,5 +49,10 @@ class InterviewsController < ApplicationController
 
   def set_user
     @user = User.find(params[:user_id])
+  end
+
+  def correct_user
+    @user = User.find(params[:user_id])
+    redirect_to(authenticated_root_path) unless @user == current_user
   end
 end

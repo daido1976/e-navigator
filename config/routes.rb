@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'interviews/index'
-
-  get 'interviews/new'
-
   devise_for :users
   devise_scope :user do
     authenticated :user do
