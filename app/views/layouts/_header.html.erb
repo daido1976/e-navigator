@@ -4,6 +4,7 @@
         <div><%= link_to "e-navigator", authenticated_root_path, class: "navbar-brand"%></div>
         <ul class="nav navbar-nav">
           <li><%= link_to "Profile", edit_user_registration_path, class: "nav-link"%></li>
+          <li><%= link_to "Interviews", user_interviews_path(current_user), class: "nav-link"%></li>
           <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link"%></li>
         </ul>
       <% else %>

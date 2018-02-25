@@ -1,0 +1,23 @@
+<h1>Interviews index</h1>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>date</th>
+      <th>judgement</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @interviews.each do |interview| %>
+      <tr>
+        <td><%= l interview.interview_datetime, format: :full_date %></td>
+        <td><%= t interview.judgement %></td>
+        <td><%= link_to "Edit", edit_user_interview_path(@user, interview.id), class: "btn btn-success" %></td>
+        <td><%= link_to "Delete", user_interview_path(@user, interview.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "New Interview", new_user_interview_path(current_user), class: "btn btn-primary" %>

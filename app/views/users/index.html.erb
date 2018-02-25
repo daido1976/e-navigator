@@ -17,7 +17,7 @@
         <td><%= user.name %></td>
         <td><%= user.email %></td>
         <td><%= user.age if user.birthday.present? %></td>
-        <td><%= user.gender %></td>
+        <td><%= t user.gender if user.gender.present? %></td>
         <td><%= user.school %></td>
         <td>interview</td>
         <td></td>
