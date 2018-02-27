@@ -14,7 +14,7 @@
         <td><%= t interview.judgement %></td>
         <td>
           <% if DateTime.now < interview.interview_datetime %>
-            <%= form_for([@user, interview]) do |f| %>
+            <%= form_for([@user, interview], url: judgement_user_interview_path(@user, interview)) do |f| %>
               <%= f.hidden_field :judgement, value: "approval" %>
               <%= f.submit "Save", data: {confirm: "Are you OK?"}, class: "btn btn-success" %>
             <% end %>

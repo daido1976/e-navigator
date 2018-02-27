@@ -26,8 +26,18 @@ class InterviewsController < ApplicationController
   def update
     @interview = @user.interviews.find(params[:id])
     if @interview.update(interview_params)
-      @user.interviews.where.not(id: @interview.id).update_all(judgement: "rejection") unless @user == current_user
       flash[:notice] = "Interview Updated!"
+      redirect_to action: "index"
+    else
+      render "edit"
+    end
+  end
+
+  def judgement
+    @interview = @user.interviews.find(params[:id])
+    if @interview.update(judgement_params)
+      @user.interviews.where.not(id: @interview.id).update_all(judgement: "rejection")
+      flash[:notice] = "Interview Comfirm!"
       redirect_to action: "index"
     else
       render "edit"
@@ -44,7 +54,11 @@ class InterviewsController < ApplicationController
 
   private
   def interview_params
-    params.require(:interview).permit(:interview_datetime, :judgement).merge(user_id: @user.id)
+    params.require(:interview).permit(:interview_datetime).merge(user_id: @user.id)
+  end
+
+  def judgement_params
+    params.require(:interview).permit(:judgement)
   end
 
   def set_user
