@@ -85,7 +85,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { :host => 'your_app.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'e-navigator-daido1976.herokuapp.com' }
   Bundler.require(*Rails.groups)
   Dotenv::Railtie.load
   config.action_mailer.delivery_method = :smtp
