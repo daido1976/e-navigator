@@ -36,7 +36,6 @@ class InterviewsController < ApplicationController
   def judgement
     @interview = @user.interviews.find(params[:id])
     if @interview.update(judgement_params)
-      @user.interviews.where.not(id: @interview.id).update_all(judgement: "rejection")
       flash[:notice] = "Interview Comfirm!"
       redirect_to action: "index"
     else
