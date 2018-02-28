@@ -87,12 +87,11 @@ Rails.application.configure do
 
   Bundler.require(*Rails.groups)
   Dotenv::Railtie.load
-  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     port:                 587,
     address:              'smtp.gmail.com',
-    domain:               'smtp.gmail.com',
+    domain:               'gmail.com',
     user_name:            ENV['LOGIN_NAME'],
     password:             ENV['LOGIN_PASSWORD'],
     authentication:       'plain',
