@@ -36,6 +36,7 @@ class InterviewsController < ApplicationController
   def judgement
     @interview = @user.interviews.find(params[:id])
     if @interview.update(judgement_params)
+      NotificationMailer.send_when_confirm(current_user, @user, @interview).deliver
       flash[:notice] = "Interview Comfirm!"
       redirect_to action: "index"
     else
