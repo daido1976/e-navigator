@@ -3,6 +3,14 @@ class InterviewsController < ApplicationController
 
   def index
     @interviews = @user.interviews.order(interview_datetime: :asc)
+    @users = User.all.where.not(id:current_user.id)
+  end
+
+  def apply
+    @interviewer = User.find(params[:user][:id])
+    NotificationMailer.send_when_application(@interviewer, current_user).deliver
+    flash[:notice] = "Interview Applied!"
+    redirect_to action: "index"
   end
 
   def new

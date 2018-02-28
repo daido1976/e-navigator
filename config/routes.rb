@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
   resources :users do
     resources :interviews do
+      get 'apply', on: :collection
       patch 'judgement', on: :member
     end
   end

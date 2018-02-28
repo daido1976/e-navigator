@@ -19,5 +19,13 @@
     <% end %>
   </tbody>
 </table>
+<%= form_for(@user, url: apply_user_interviews_path, html: {method: 'GET'}) do |f| %>
+  <div class="form-group">
+    <%= f.collection_select :id, @users, :id, :name %>
+    <%= f.submit "Apply", class: "btn btn-info" %>
+  </div>
+<% end %>
 
+<div class="form-group">
 <%= link_to "New Interview", new_user_interview_path(current_user), class: "btn btn-primary" %>
+</div>
