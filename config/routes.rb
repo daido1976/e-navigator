@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     end
   end
   resources :users do
-    resources :interviews
+    resources :interviews do
+      patch 'judgement', on: :member
+    end
   end
 end

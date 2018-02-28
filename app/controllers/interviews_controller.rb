@@ -1,6 +1,5 @@
 class InterviewsController < ApplicationController
-  before_action :set_user, except: :create
-  before_action :correct_user, only: :index
+  before_action :set_user
 
   def index
     @interviews = @user.interviews.order(interview_datetime: :asc)
@@ -34,6 +33,16 @@ class InterviewsController < ApplicationController
     end
   end
 
+  def judgement
+    @interview = @user.interviews.find(params[:id])
+    if @interview.update(judgement_params)
+      flash[:notice] = "Interview Comfirm!"
+      redirect_to action: "index"
+    else
+      render "edit"
+    end
+  end
+
   def destroy
     @interview = @user.interviews.find(params[:id])
     if @interview.destroy
@@ -44,15 +53,14 @@ class InterviewsController < ApplicationController
 
   private
   def interview_params
-    params.require(:interview).permit(:interview_datetime).merge(user_id: current_user.id)
+    params.require(:interview).permit(:interview_datetime).merge(user_id: @user.id)
+  end
+
+  def judgement_params
+    params.require(:interview).permit(:judgement)
   end
 
   def set_user
     @user = User.find(params[:user_id])
-  end
-
-  def correct_user
-    @user = User.find(params[:user_id])
-    redirect_to(authenticated_root_path) unless @user == current_user
   end
 end
