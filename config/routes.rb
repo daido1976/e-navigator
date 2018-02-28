@@ -13,4 +13,8 @@ Rails.application.routes.draw do
       patch 'judgement', on: :member
     end
   end
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/lo"
+  end
 end
