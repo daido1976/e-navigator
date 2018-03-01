@@ -3,7 +3,7 @@ class InterviewsController < ApplicationController
 
   def index
     @interviews = @user.interviews.order(interview_datetime: :asc)
-    @users = User.all.where.not(id:current_user.id)
+    @users = User.all.where.not(id:current_user.id, name: nil)
   end
 
   def apply
