@@ -9,6 +9,6 @@ class NotificationMailer < ApplicationMailer
     @interviewer = interviewer
     @interviewee = interviewee
     @interview = interview
-    mail to: @interviewee.email, subject: "面接日程が確定しました！"
+    mail to: [@interviewee.email, @interviewer.email], subject: "面接日程が確定しました！"
   end
 end
