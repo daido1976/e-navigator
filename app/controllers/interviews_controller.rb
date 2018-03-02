@@ -1,5 +1,6 @@
 class InterviewsController < ApplicationController
   before_action :set_user
+  before_action :authenticate_user!
 
   def index
     @interviews = @user.interviews.order(interview_datetime: :asc)
