@@ -1,8 +1,17 @@
 class InterviewsController < ApplicationController
   before_action :set_user
+  before_action :authenticate_user!
 
   def index
     @interviews = @user.interviews.order(interview_datetime: :asc)
+    @users = User.all.where.not(id:current_user.id, name: nil)
+  end
+
+  def apply
+    @interviewer = User.find(params[:user][:id])
+    NotificationMailer.send_when_application(@interviewer, current_user).deliver
+    flash[:notice] = "Interview Applied!"
+    redirect_to action: "index"
   end
 
   def new
@@ -36,6 +45,7 @@ class InterviewsController < ApplicationController
   def judgement
     @interview = @user.interviews.find(params[:id])
     if @interview.update(judgement_params)
+      NotificationMailer.send_when_confirm(current_user, @user, @interview).deliver
       flash[:notice] = "Interview Comfirm!"
       redirect_to action: "index"
     else

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h3><%= @interviewee.name %>さんの面接日程が<%= @interviewer.name %>さんによって承認されました。</h3>
+    <p>日程：<%= l @interview.interview_datetime, format: :full_date %>スタート</p>
+    <p>場所は、株式会社フィードフォースで行います。</p>
+    <p>今後の連絡は担当人事の方から再度連絡させていただきます。</p>
+    <p>よろしくお願いします。</p>
+  </body>
+</html>

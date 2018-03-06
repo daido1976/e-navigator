@@ -16,7 +16,7 @@
           <% if DateTime.now < interview.interview_datetime %>
             <%= form_for([@user, interview], url: judgement_user_interview_path(@user, interview)) do |f| %>
               <%= f.hidden_field :judgement, value: "approval" %>
-              <%= f.submit "Save", data: {confirm: "Are you OK?"}, class: "btn btn-success" %>
+              <%= f.submit "Save", data: {confirm: "Selected: #{l interview.interview_datetime, format: :full_date}\nAre you OK?"}, class: "btn btn-success" %>
             <% end %>
           <% else %>
             <button type="button" class="btn btn-default">Past</button>

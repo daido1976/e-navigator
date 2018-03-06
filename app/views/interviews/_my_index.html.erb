@@ -13,11 +13,26 @@
       <tr class=<%=interview.judgement%>>
         <td><%= l interview.interview_datetime, format: :full_date %></td>
         <td><%= t interview.judgement %></td>
+        <% if interview.judgement == "pend" %>
         <td><%= link_to "Edit", edit_user_interview_path(@user, interview.id), class: "btn btn-success" %></td>
         <td><%= link_to "Delete", user_interview_path(@user, interview.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %></td>
+        <% else %>
+        <td><button type="button" class="btn btn-success" disabled>Edit</button></td>
+        <td><button type="button" class="btn btn-danger" disabled>Delete</button></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
+<div class="row">
+  <div class="form-group col-lg-10">
+  <%= link_to "New Interview", new_user_interview_path(current_user), class: "btn btn-primary" %>
+  </div>
 
-<%= link_to "New Interview", new_user_interview_path(current_user), class: "btn btn-primary" %>
+  <%= form_for(@user, url: apply_user_interviews_path, html: {method: 'GET'}) do |f| %>
+    <div class="form-group col-lg-2">
+      <%= f.collection_select :id, @users, :id, :name %>
+      <%= f.submit "Apply", class: "btn btn-info" %>
+    </div>
+  <% end %>
+</div>

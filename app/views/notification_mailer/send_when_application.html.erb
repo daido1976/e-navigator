@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h3><%= @interviewee.name %>さんの面接希望日が決まりました！</h3>
+    <p>以下の URL から、面接日時の承認をよろしくお願いします。</p>
+    <p><%= link_to "#{@interviewee.name}さんの面接希望日一覧", "https://e-navigator-daido1976.herokuapp.com/users/#{@interviewee.id}/interviews"  %></p>
+  </body>
+</html>
