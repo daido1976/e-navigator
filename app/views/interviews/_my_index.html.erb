@@ -17,8 +17,8 @@
         <td><%= link_to "Edit", edit_user_interview_path(@user, interview.id), class: "btn btn-success" %></td>
         <td><%= link_to "Delete", user_interview_path(@user, interview.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %></td>
         <% else %>
-        <td><button type="button" class="btn btn-default">Edit</button></td>
-        <td><button type="button" class="btn btn-default">Delete</button></td>
+        <td><button type="button" class="btn btn-success" disabled>Edit</button></td>
+        <td><button type="button" class="btn btn-danger" disabled>Delete</button></td>
         <% end %>
       </tr>
     <% end %>
